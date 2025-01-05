@@ -64,10 +64,10 @@ export default function RollupConfigPage() {
   // done here because zod schema must be synchronous
   const refinedRollupConfigSchema = rollupConfigSchema.refine(
     (data) => {
-      return tokenDecimals && tokenDecimals === 18;
+      return tokenDecimals && tokenDecimals <= 36;
     },
     {
-      message: 'Token decimals must be 18.',
+      message: 'Token decimals must be less than or equal 36.',
       path: ['nativeToken'],
     },
   );
